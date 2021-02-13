@@ -1,20 +1,20 @@
-import React from 'react';
-import { Employee, PictureInfo } from './employee-list.vm';
+import React, { useState } from 'react';
+import { PictureInfo } from './employee-list.vm';
 import { useHistory } from 'react-router-dom';
 import { routes } from 'core/router';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+// import Table from '@material-ui/core/Table';
+// import TableBody from '@material-ui/core/TableBody';
+// import TableCell from '@material-ui/core/TableCell';
+// import TableContainer from '@material-ui/core/TableContainer';
+// import TableHead from '@material-ui/core/TableHead';
+// import TableRow from '@material-ui/core/TableRow';
 // import Checkbox from '@material-ui/core/Checkbox';
 // import IconButton from '@material-ui/core/IconButton';
 // import EditIcon from '@material-ui/icons/Edit';
 // import DeleteIcon from '@material-ui/icons/Delete';
+import { CartComponent } from '../../common/components/cart'
 
-// import styles from './employee-list.styles'
-
+import * as classes from './employee-list.styles';
 interface Props {
   // employees: Employee[];
   picture: PictureInfo[];
@@ -31,46 +31,46 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
   console.log(picture);
   console.log("*************************");
 
+  const [demo, setDemo] = useState<string>('')
+
+  const handleOnChange = (e:any) => {
+    console.log(e.target.checked);
+    console.log(e.target.id)
+    const check = e.target.checked;
+
+    if (check) {
+      setDemo(e.target.id)
+    } else {
+      // clonado de objeto 
+    }
+  }
+
+  /* handleOnChange recupera si se ha clicqueado o no
+
+    por un lado .-
+    si se ha pulsado y es true añadimos si no quitamos
+
+  */
+
   return (
     <>
       {section}
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {/* <TableCell align="right">Activo</TableCell> */}
-              <TableCell align="right">Id</TableCell>
-              <TableCell align="right">picUrl</TableCell>
-              <TableCell align="right">title</TableCell>
-              {/* <TableCell align="right">Fecha último incurrido</TableCell>
-              <TableCell align="right">Comandos</TableCell> */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {picture.map(row => (
-              <TableRow key={row.id}>
-                {/* <TableCell component="th" scope="row">
-                  <Checkbox checked={row.isActive} disabled />
-                </TableCell> */}
-                <TableCell align="right">{row.id}</TableCell>
-                <TableCell align="right">
-                  <img src={row.picUrl} />
-                </TableCell>
-                <TableCell align="right">{row.title}</TableCell>
-                {/* <TableCell align="right">{row.lastDateIncurred}</TableCell>
-                <TableCell align="right">
-                  <IconButton onClick={() => onEditEmployee(row.id)}>
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton onClick={() => console.log('on Delete: ${row.id}')}>
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell> */}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <hr/>
+      {picture.map(row => (
+        <div key={row.id}>
+          {row.id}
+          <img className={classes.imagen} src={row.picUrl} />
+          {row.title}
+          <input type="checkbox" id={row.id} value={row.title} onChange={handleOnChange} />
+            <label htmlFor={row.id}>{'Añadir a mi carrito'}</label>
+        </div>
+      ))}
+      <CartComponent demo={demo}/>
     </>
   );
 };
+
+
+/*
+input un onchange lanza evento
+*/

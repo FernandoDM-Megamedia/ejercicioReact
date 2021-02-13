@@ -4,6 +4,9 @@ import { theme } from 'core/theme';
 export const root = css`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
 `;
 
 export const items = css`
@@ -12,10 +15,10 @@ export const items = css`
   grid-gap: 4rem;
 
   @media (min-width: ${theme.breakpoints.values.sm}px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
 export const item = css`
-  padding: 2rem 0rem;
+  padding: 2rem 2rem;
 `;

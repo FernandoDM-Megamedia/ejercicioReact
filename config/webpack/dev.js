@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const Dotenv = require('dotenv-webpack');
 const base = require('./base');
 const helpers = require('./helpers');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const hotReloadingEntries = ['react-hot-loader/patch'];
 
@@ -42,6 +43,20 @@ module.exports = merge.strategy({
         options: {
           name: 'img/[name].[ext]',
         },
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass")
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,

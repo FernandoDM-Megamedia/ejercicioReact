@@ -8,16 +8,18 @@ export const TextFieldComponent: React.FunctionComponent<TextFieldProps> = props
   const hasError = Boolean(meta && meta.touched && meta.error);
 
   return (
-    <MuiTextField
-      {...props}
-      name={textFieldProps.name}
-      onChange={textFieldProps.onChange}
-      onBlur={textFieldProps.onBlur}
-      value={textFieldProps.value}
-      error={hasError}
-      helperText={hasError ? meta.error : ''}
-      fullWidth={true}
-      margin="normal"
-    />
+    <div>
+      <MuiTextField
+        {...props}
+        name={textFieldProps.name}
+        onChange={textFieldProps.onChange}
+        onBlur={textFieldProps.onBlur}
+        value={textFieldProps.value}
+        error={hasError}
+        helperText={hasError ? meta.error : ''}
+        fullWidth={true}
+        margin="normal"
+      />
+    </div>
   );
 };

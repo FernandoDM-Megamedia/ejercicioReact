@@ -1,5 +1,5 @@
 import { css } from 'emotion';
-//import { theme } from 'core/theme';
+import { theme } from 'core/theme';
 
 export const loginText = css`
   margin-left: auto;
