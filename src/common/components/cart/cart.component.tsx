@@ -1,16 +1,28 @@
 import React from 'react';
+import * as classes from './cart.styles';
 
 interface Props {
-  demo: string
+  demo: Array<any>
+}
+
+interface Type {
+  id: string;
+  ckeck: boolean;
 }
 
 export const CartComponent: React.FC<Props> = props => {
-    const { demo } = props;
+  const { demo } = props;
+  console.log("estoy en el carrito con .- ", demo)
   return (
-    <div>
+    <div className={classes.content}>
       {' Mi  carrito de compra contiene .- '}
-      {demo}
-
+      {demo.map(row => (
+        <div key={row.id}>
+          {row.id}
+          <img className={classes.imagen} src={row.picUrl} />
+          {row.title}
+        </div>
+      ))}
     </div>
   );
 };

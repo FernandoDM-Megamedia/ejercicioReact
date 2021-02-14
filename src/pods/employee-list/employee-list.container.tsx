@@ -12,10 +12,6 @@ export const EmployeeListContainer: React.FunctionComponent = () => {
 
   const { section } = useParams();
 
-  console.log("********************");
-  console.log(section);
-  console.log("********************");
-
   // const useStateReac = () => { section ? React.useState<PictureInfo[]>([]) : React.useState<Employee[]>([]) };
 
   const [list, setList] = React.useState<PictureInfo[]>([]);
@@ -29,8 +25,8 @@ export const EmployeeListContainer: React.FunctionComponent = () => {
 
   const onLoadPictureList = async () => {
     const apiPictureList = await (section === 'dibujo' ? getDibujoList() : getFotoList());
-    console.log("------ apiPictureList -------");
-    console.log(apiPictureList);
+    // console.log("------ apiPictureList -------");
+    // console.log(apiPictureList);
     const viewModelPictueList = (section === 'dibujo' ? mapDibujoListFromApiToVm(apiPictureList) : mapFotoListFromApiToVm(apiPictureList));
     setList(viewModelPictueList);
   };

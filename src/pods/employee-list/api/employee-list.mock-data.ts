@@ -3,12 +3,17 @@ import { PictureInfo } from './employee-list.api-model';
 
 export const mockFotoList: PictureInfo[] = [
   {
-    id: 'f1',
+    id: '1',
     picUrl: 'https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/144140568_173172650849242_275142654562410189_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=110&_nc_ohc=mJRN3ESmg1gAX8z6AwC&tp=1&oh=49fbedf3cc035d6cb0d1d71c68b20369&oe=604755A6',
     title: 'titulo de la imagen',
   },
   {
-    id: 'f2',
+    id: '2',
+    picUrl: 'https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/144140568_173172650849242_275142654562410189_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=110&_nc_ohc=mJRN3ESmg1gAX8z6AwC&tp=1&oh=49fbedf3cc035d6cb0d1d71c68b20369&oe=604755A6',
+    title: 'titulo de la imagen',
+  },
+  {
+    id: '3',
     picUrl: 'https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/144140568_173172650849242_275142654562410189_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=110&_nc_ohc=mJRN3ESmg1gAX8z6AwC&tp=1&oh=49fbedf3cc035d6cb0d1d71c68b20369&oe=604755A6',
     title: 'titulo de la imagen',
   },
@@ -16,12 +21,12 @@ export const mockFotoList: PictureInfo[] = [
 
 export const mockDibujosList: PictureInfo[] = [
   {
-    id: 'd1',
+    id: '1',
     picUrl: 'https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/142773145_463314118160535_7773727908596484860_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=-R-bBby7v3sAX_sCzYA&tp=1&oh=9ecb6933d1e01261db2adfe3392b457a&oe=60480E25',
     title: 'titulo de la imagen',
   },
   {
-    id: 'd2',
+    id: '2',
     picUrl: 'https://scontent-mad1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/142773145_463314118160535_7773727908596484860_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=-R-bBby7v3sAX_sCzYA&tp=1&oh=9ecb6933d1e01261db2adfe3392b457a&oe=60480E25',
     title: 'titulo de la imagen',
   },
