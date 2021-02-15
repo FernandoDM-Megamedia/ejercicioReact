@@ -10,6 +10,7 @@ interface Props {
   picture: PictureInfo[];
   section;
 }
+
 export const EmployeeListComponent: React.FunctionComponent<Props> = ({
   picture,
   section,
