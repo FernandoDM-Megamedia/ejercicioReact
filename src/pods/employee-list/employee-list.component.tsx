@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PictureInfo } from './employee-list.vm';
 import { useHistory } from 'react-router-dom';
 import { routes } from 'core/router';
@@ -38,13 +38,51 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
       /* comprobar el id */
       /* sacar el que se ha pulsado  */
       const index = item.findIndex(i => i.id === id)
-      console.log("indexxxxx.- ", index)
+      // console.log("indexxxxx.- ", index)
       if (index > -1) {
-        console.log("entro en el iff")
+        // console.log("entro en el iff")
         item.splice(index, 1)
       }
       setItem([...item])
     }
+  }
+
+  // ** funcion borrado
+
+  const handleDelete = (e: any) => {
+    e.persist() /*<----------------- revisar para que no se pierda el evento  */
+    const {
+      id
+    } = e.target
+    // console.log("id.- ", id)
+
+    const imagenObject = picture.find(callbackImg => callbackImg.id === id)
+    // console.log(imagenObject)
+    const index = item.findIndex(i => i.id === id)
+    // console.log("index .- ", index)
+    // console.log("indexxxxx.- ", index)
+    if (index > -1) {
+      // console.log("entro en el iff")
+      item.splice(index, 1)
+
+    }
+    setItem([...item])
+
+  }
+
+  useEffect(() => { console.log('************', item) }, [item])
+
+  const isChecked = (id) : boolean => {
+    // forech de item  y conporbar el check
+    // console.log("id a borrar ....", id)
+    const imagenObjectDEsmarcar = picture.find(callbackImg => callbackImg.id === id)
+    const index = item.findIndex(i => i.id === id)
+    // const index = item.findIndex(i => i.id === id)
+    console.log("image objet ?", index)
+
+
+
+    return false
   }
 
   return (
@@ -56,11 +94,11 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
           {row.id}
           <img className={classes.imagen} src={row.picUrl} />
           {row.title}
-          <input type="checkbox" id={row.id} value={row.title} onChange={handleOnChange} />
+          <input type="checkbox" id={row.id} value={row.title} onChange={handleOnChange} defaultChecked={isChecked(row.id) ? true : false} />
           <label htmlFor={row.id}>{'Añadir a mi carrito'}</label>
         </div>
       ))}
-      <CartComponent demo={item} />
+      <CartComponent demo={item} handleDelete={handleDelete} />
     </>
   );
 };
