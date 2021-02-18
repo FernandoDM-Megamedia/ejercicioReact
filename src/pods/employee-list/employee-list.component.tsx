@@ -25,7 +25,6 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
       id, checked: check
     } = e.target
 
-
     const imagenObject = picture.find(callbackImg => callbackImg.id === id)  /*<----------------- revisar  */
 
     // console.log(imagenObject)
@@ -33,7 +32,7 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
     if (check) {
       setItem(prevItems => [...prevItems,
         imagenObject
-      ]);
+      ]);  // metiendo el objeto y añadiendo el nuevo callback  // clonado 
     } else {
       /* comprobar el id */
       /* sacar el que se ha pulsado  */
@@ -54,35 +53,20 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
     const {
       id
     } = e.target
-    // console.log("id.- ", id)
-
-    const imagenObject = picture.find(callbackImg => callbackImg.id === id)
-    // console.log(imagenObject)
+    // const imagenObject = picture.find(callbackImg => callbackImg.id === id)
     const index = item.findIndex(i => i.id === id)
-    // console.log("index .- ", index)
-    // console.log("indexxxxx.- ", index)
     if (index > -1) {
-      // console.log("entro en el iff")
       item.splice(index, 1)
-
     }
     setItem([...item])
-
   }
 
-  useEffect(() => { console.log('************', item) }, [item])
+  // useEffect(() => { console.log('************', item) }, [item])  solo para saber que me retorna el dato del compoente hijo
 
-  const isChecked = (id) : boolean => {
-    // forech de item  y conporbar el check
-    // console.log("id a borrar ....", id)
-    const imagenObjectDEsmarcar = picture.find(callbackImg => callbackImg.id === id)
+  const isChecked = (id): any => {
     const index = item.findIndex(i => i.id === id)
-    // const index = item.findIndex(i => i.id === id)
-    console.log("image objet ?", index)
-
-
-
-    return false
+    // console.log("dato de ? .-", index)
+    return index != -1 ? { checked: true } : { checked: false }
   }
 
   return (
@@ -94,7 +78,7 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
           {row.id}
           <img className={classes.imagen} src={row.picUrl} />
           {row.title}
-          <input type="checkbox" id={row.id} value={row.title} onChange={handleOnChange} defaultChecked={isChecked(row.id) ? true : false} />
+          <input type="checkbox" id={row.id} value={row.title} onChange={handleOnChange} {...isChecked(row.id)} />
           <label htmlFor={row.id}>{'Añadir a mi carrito'}</label>
         </div>
       ))}
