@@ -16,14 +16,24 @@ export const SubmoduleListContainer: React.FunctionComponent = () => {
       //   linkTo: routes.gallery, // No link defined
       //   icon: PhotoCamera,
       // },
+      // {
+      //   title: 'Fotografias',
+      //   linkTo: routes.employees('foto'),
+      //   icon: CameraEnhanceIcon,
+      // },
+      // {
+      //   title: 'Dibujos',
+      //   linkTo: routes.employees('dibujo'),
+      //   icon: ImageIcon,
+      // },
       {
-        title: 'Fotografias',
-        linkTo: routes.employees('foto'),
+        title: 'FotografiasGaleria',
+        linkTo: routes.gallerys('foto'),
         icon: CameraEnhanceIcon,
       },
       {
-        title: 'Dibujos',
-        linkTo: routes.employees('dibujo'),
+        title: 'DibujosGaleria',
+        linkTo: routes.gallerys('dibujo'),
         icon: ImageIcon,
       },
     ],

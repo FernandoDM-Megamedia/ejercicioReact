@@ -3,13 +3,21 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { switchRoutes } from './routes';
 import {
   LoginScene,
-  GalleryScene,
+  GalleryListScene,
   SubmoduleListScene,
   EmployeeListScene,
   EmployeeScene,
 } from 'scenes';
 
-export const RouterComponent: React.FunctionComponent = () => {
+export const RouterComponent: React.FC<any> = Props => {
+
+  const {
+    handleOnChange,
+    handleDelete,
+    isChecked,
+    item
+  } = Props
+
   return (
     <Router>
       {/* <Switch> */}
@@ -25,9 +33,11 @@ export const RouterComponent: React.FunctionComponent = () => {
       />
       <Route
         exact={true}
-        path={switchRoutes.gallery}
-        component={GalleryScene}
-      />
+        path={switchRoutes.gallerys}
+      >
+        <GalleryListScene {...Props} />
+      </Route>
+      
       <Route
         exact={true}
         path={[switchRoutes.root, switchRoutes.submoduleList]}

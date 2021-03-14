@@ -1,2 +1,1 @@
-// export * from './gallery-list.container';
-    
+export * from './gallery-list.container';

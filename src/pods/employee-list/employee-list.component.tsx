@@ -6,6 +6,7 @@ import { CartComponent } from '../../common/components/cart'
 
 import * as classes from './employee-list.styles';
 import { items } from 'common/components/dashboard/dashboard.styles';
+
 interface Props {
   picture: PictureInfo[];
   section;
@@ -70,11 +71,11 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <>
+    <div className={classes.section}>
       {section}
-      <hr />
+      <div className={classes.content}>
       {picture.map(row => (
-        <div key={row.id}>
+        <div key={row.id} className={classes.item}>
           {row.id}
           <img className={classes.imagen} src={row.picUrl} />
           {row.title}
@@ -82,7 +83,8 @@ export const EmployeeListComponent: React.FunctionComponent<Props> = ({
           <label htmlFor={row.id}>{'Añadir a mi carrito'}</label>
         </div>
       ))}
+      </div>
       <CartComponent demo={item} handleDelete={handleDelete} />
-    </>
+    </div>
   );
 };
