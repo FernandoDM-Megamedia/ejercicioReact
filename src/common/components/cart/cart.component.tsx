@@ -1,32 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as classes from './cart.styles';
-// import { MyCartContext } from 'common-app/cart-context';
+import { MyContext } from '../../../OurContext';
 
-interface Props {
-  demo: Array<any>
-  handleDelete: any
-}
+export const CartComponent: React.FC<any> = () => {
 
-export const CartComponent: React.FC<any> = props => {
-  const { item, handleDelete } = props;
-
+  const myContext = React.useContext(MyContext);
 
   React.useEffect(() => {
-    console.log(' dentro del carrito -------')
-    console.log(props)
-  }, [props]);
-
-  // const myContext = React.useContext(MyCartContext);
+  }, [myContext.item]);
 
   return (
     <div className={classes.content}>
       {' Mi  carrito de compra contiene .- '}
-      {item && item.map(row => (
+      {myContext.item && myContext.item.map(row => (
         <div key={row.id}>
           {row.id}
           <img className={classes.imagen} src={row.picUrl} />
           {row.title}
-          <button id={row.id} onClick={handleDelete}>elimina</button>
+          <button id={row.id} onClick={(e) => { myContext.handleDelete(e, row.id) }}>elimina</button>
         </div>
       ))}
     </div>

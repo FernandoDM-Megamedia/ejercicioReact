@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
-// import Link from '@material-ui/core/Link'
+
+import { MyContext } from './../OurContext';
 
 import { CartComponent } from './../common/components/cart'
 
 import { Link } from 'react-router-dom'
-import { AuthContext } from 'common-app/auth';
 
 import { routes } from 'core/router';
 import * as classes from './app.layout.styles';
 
+export const AppLayout: React.FC<any> = ({ children }) => {
 
-export const AppLayout: React.FC<any> = ({ children, handletoggleShow }) => {
-
-  // const [show, toggleShow] = React.useState(false);
+  const myContext = React.useContext(MyContext);
+  console.log('dentro de submodule list', myContext.show)
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" >
         <Toolbar>
           <Typography variant="h6" color="inherit">
             Galeria de fotos - [dwk262]
@@ -42,27 +42,14 @@ export const AppLayout: React.FC<any> = ({ children, handletoggleShow }) => {
             </Link>
           </Typography>
 
-
-          <Typography
-            variant="h6"
-            color="inherit"
-            className={classes.loginText}
-          >
-
-          </Typography>
-          {/* CArrito de compra - */}
-          <Button onClick={handletoggleShow} >
-            {/* Carrito: {show ? 'show' : 'hide'} */}
+          <Button onClick={(e) => { myContext.handletoggleShow(e) }} >
             <ShoppingCartIcon />
           </Button>
 
         </Toolbar>
 
       </AppBar>
-      {/* Mostrams u ocultamos el caro de compra componente */}
-      {/* {show && <div><CartComponent demo={item} handleDelete={handleDelete} /></div>} */}
-      {/* {show && <div>{'aqui va el carrito'}</div>} */}
-      {/* montamos el children que nos viene  ... */}
+      {myContext.show && <CartComponent />}
       {children}
     </>
   );

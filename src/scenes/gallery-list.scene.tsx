@@ -7,18 +7,25 @@ import { useParams } from 'react-router-dom';
 export const GalleryListScene: React.FC<any> = (Props) => {
 
   const {
-    handleSection, handletoggleShow, show
+    handletoggleShow, show
   } = Props
 
-  const { section } = useParams();
-  React.useEffect(() => {
-    handleSection(section)
-  }, []);
+  // const {
+  //   handleSection, handletoggleShow, show
+  // } = Props
+
+  // const { section } = useParams();
+
+  // React.useEffect(() => {
+  //   handleSection(section)
+  // }, []);
 
   return (
     <AppLayout handletoggleShow={handletoggleShow} >
-      {show && <CartComponent {...Props} />}
-      <GalleryListContainer {...Props} />
+      {show && <CartComponent/>}
+      <GalleryListContainer/>
+      {/* {show && <CartComponent {...Props} />}
+      <GalleryListContainer {...Props} /> */}
     </AppLayout>
   );
 };

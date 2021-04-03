@@ -46,6 +46,10 @@ export const LoginComponent: React.FunctionComponent<Props> = props => {
             </Form>
           )}
         </Formik>
+        <hr/>
+        <span>user  .- 'admin'</span>
+        <hr/>
+        <span> password .- 'test'</span>
       </CardContent>
     </Card>
   );
